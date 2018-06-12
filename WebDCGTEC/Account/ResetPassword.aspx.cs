@@ -27,7 +27,7 @@ namespace WebDCGTEC.Account
                 var user = manager.FindByName(Email.Text);
                 if (user == null)
                 {
-                    ErrorMessage.Text = "No user found";
+                    ErrorMessage.Text = "No se encontró ningún usuario";
                     return;
                 }
                 var result = manager.ResetPassword(user.Id, code, Password.Text);
@@ -40,7 +40,7 @@ namespace WebDCGTEC.Account
                 return;
             }
 
-            ErrorMessage.Text = "An error has occurred";
+            ErrorMessage.Text = "Se produjo un error";
         }
     }
 }

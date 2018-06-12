@@ -1,21 +1,21 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="OpenAuthProviders.ascx.cs" Inherits="WebDCGTEC.Account.OpenAuthProviders" %>
 
 <div id="socialLoginList">
-    <h4>Use another service to log in.</h4>
+    <h4>Utilice otro servicio para iniciar sesión.</h4>
     <hr />
     <asp:ListView runat="server" ID="providerDetails" ItemType="System.String"
         SelectMethod="GetProviderNames" ViewStateMode="Disabled">
         <ItemTemplate>
             <p>
                 <button type="submit" class="btn btn-default" name="provider" value="<%#: Item %>"
-                    title="Log in using your <%#: Item %> account.">
+                    title="Inicie sesión con su <%#: Item %> cuenta.">
                     <%#: Item %>
                 </button>
             </p>
         </ItemTemplate>
         <EmptyDataTemplate>
             <div>
-                <p>There are no external authentication services configured. See <a href="http://go.microsoft.com/fwlink/?LinkId=252803">this article</a> for details on setting up this ASP.NET application to support logging in via external services.</p>
+                <p>No existen servicios de autenticación externos configurados. Consulte <a href="http://go.microsoft.com/fwlink/?LinkId=252803">este artículo</a> para obtener información sobre la configuración de esta aplicación de ASP.NET para admitir el inicio de sesión a través de servicios externos.</p>
             </div>
         </EmptyDataTemplate>
     </asp:ListView>

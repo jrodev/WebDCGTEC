@@ -2,7 +2,7 @@
 <%@ Register Src="~/Account/OpenAuthProviders.ascx" TagPrefix="uc" TagName="OpenAuthProviders" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    <h2>Manage your external logins.</h2>
+    <h2>Administre sus inicios de sesión externos.</h2>
     <asp:PlaceHolder runat="server" ID="successMessage" Visible="false" ViewStateMode="Disabled">
             <p class="text-success"><%: SuccessMessage %></p>
         </asp:PlaceHolder>
@@ -14,7 +14,7 @@
                 SelectMethod="GetLogins" DeleteMethod="RemoveLogin" DataKeyNames="LoginProvider,ProviderKey">
 
                 <LayoutTemplate>
-                    <h4>Registered Logins</h4>
+                    <h4>Inicios de sesión registrados</h4>
                     <table class="table">
                         <tbody>
                             <tr runat="server" id="itemPlaceholder"></tr>
@@ -26,8 +26,8 @@
                     <tr>
                         <td><%#: Item.LoginProvider %></td>
                         <td>
-                            <asp:Button runat="server" Text="Remove" CommandName="Delete" CausesValidation="false"
-                                ToolTip='<%# "Remove this " + Item.LoginProvider + " login from your account" %>'
+                            <asp:Button runat="server" Text="Quitar" CommandName="Delete" CausesValidation="false"
+                                ToolTip='<%# "Quitar esto " + Item.LoginProvider + " inicio de sesión de su cuenta" %>'
                                 Visible="<%# CanRemoveExternalLogins %>" CssClass="btn btn-default" />
                         </td>
                     </tr>

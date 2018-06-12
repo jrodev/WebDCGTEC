@@ -22,7 +22,7 @@ namespace WebDCGTEC.Account
                 var message = new IdentityMessage
                 {
                     Destination = PhoneNumber.Text,
-                    Body = "Your security code is " + code
+                    Body = "Su código de seguridad es " + code
                 };
 
                 manager.SmsService.Send(message);

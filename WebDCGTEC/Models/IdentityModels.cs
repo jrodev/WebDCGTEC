@@ -10,14 +10,14 @@ using WebDCGTEC.Models;
 
 namespace WebDCGTEC.Models
 {
-    // You can add User data for the user by adding more properties to your User class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
+    // Para agregar datos del usuario, agregue más propiedades a su clase de usuario. Visite http://go.microsoft.com/fwlink/?LinkID=317594 para obtener más información.
     public class ApplicationUser : IdentityUser
     {
         public ClaimsIdentity GenerateUserIdentity(ApplicationUserManager manager)
         {
-            // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
+            // Tenga en cuenta que authenticationType debe coincidir con el valor definido en CookieAuthenticationOptions.AuthenticationType
             var userIdentity = manager.CreateIdentity(this, DefaultAuthenticationTypes.ApplicationCookie);
-            // Add custom user claims here
+            // Agregar reclamaciones de usuario personalizadas aquí
             return userIdentity;
         }
 
@@ -41,12 +41,12 @@ namespace WebDCGTEC.Models
     }
 }
 
-#region Helpers
+#region Aplicaciones auxiliares
 namespace WebDCGTEC
 {
     public static class IdentityHelper
     {
-        // Used for XSRF when linking external logins
+        // Se utilizan para XSRF al vincular inicios de sesión externos
         public const string XsrfKey = "XsrfId";
 
         public const string ProviderNameKey = "providerName";

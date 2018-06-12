@@ -13,7 +13,7 @@ namespace WebDCGTEC.Account
         protected void Page_Load(object sender, EventArgs e)
         {
             RegisterHyperLink.NavigateUrl = "Register";
-            // Enable this once you have account confirmation enabled for password reset functionality
+            // Habilite esta opción una vez tenga la confirmación de la cuenta habilitada para la funcionalidad de restablecimiento de contraseña
             //ForgotPasswordHyperLink.NavigateUrl = "Forgot";
             OpenAuthLogin.ReturnUrl = Request.QueryString["ReturnUrl"];
             var returnUrl = HttpUtility.UrlEncode(Request.QueryString["ReturnUrl"]);
@@ -27,12 +27,12 @@ namespace WebDCGTEC.Account
         {
             if (IsValid)
             {
-                // Validate the user password
+                // Validar la contraseña del usuario
                 var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
                 var signinManager = Context.GetOwinContext().GetUserManager<ApplicationSignInManager>();
 
-                // This doen't count login failures towards account lockout
-                // To enable password failures to trigger lockout, change to shouldLockout: true
+                // Esto no cuenta los errores de inicio de sesión hacia el bloqueo de cuenta
+                // Para habilitar los errores de contraseña para desencadenar el bloqueo, cambie a shouldLockout: true
                 var result = signinManager.PasswordSignIn(Email.Text, Password.Text, RememberMe.Checked, shouldLockout: false);
 
                 switch (result)
@@ -51,7 +51,7 @@ namespace WebDCGTEC.Account
                         break;
                     case SignInStatus.Failure:
                     default:
-                        FailureText.Text = "Invalid login attempt";
+                        FailureText.Text = "Intento de inicio de sesión no válido";
                         ErrorMessage.Visible = true;
                         break;
                 }

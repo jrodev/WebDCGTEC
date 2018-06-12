@@ -23,7 +23,7 @@ namespace WebDCGTEC.Account
         {
             if (!ModelState.IsValid)
             {
-                ModelState.AddModelError("", "Invalid code");
+                ModelState.AddModelError("", "Código no válido");
                 return;
             }
 
@@ -43,8 +43,8 @@ namespace WebDCGTEC.Account
                 }
             }
 
-            // If we got this far, something failed, redisplay form
-            ModelState.AddModelError("", "Failed to verify phone");
+            // Si hemos llegado tan lejos, algo ha fallado, volver a mostrar formulario
+            ModelState.AddModelError("", "Error al comprobar el teléfono");
         }
     }
 }

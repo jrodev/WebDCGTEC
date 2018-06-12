@@ -39,7 +39,7 @@ namespace WebDCGTEC.Account
 
             HasPhoneNumber = String.IsNullOrEmpty(manager.GetPhoneNumber(User.Identity.GetUserId()));
 
-            // Enable this after setting up two-factor authentientication
+            // Habilitar esta opción tras configurar autenticación de dos factores
             //PhoneNumber.Text = manager.GetPhoneNumber(User.Identity.GetUserId()) ?? String.Empty;
 
             TwoFactorEnabled = manager.GetTwoFactorEnabled(User.Identity.GetUserId());
@@ -50,7 +50,7 @@ namespace WebDCGTEC.Account
 
             if (!IsPostBack)
             {
-                // Determine the sections to render
+                // Determine las secciones que se van a presentar
                 if (HasPassword(manager))
                 {
                     ChangePassword.Visible = true;
@@ -61,19 +61,19 @@ namespace WebDCGTEC.Account
                     ChangePassword.Visible = false;
                 }
 
-                // Render success message
+                // Presentar mensaje de operación correcta
                 var message = Request.QueryString["m"];
                 if (message != null)
                 {
-                    // Strip the query string from action
+                    // Seccionar la cadena de consulta desde la acción
                     Form.Action = ResolveUrl("~/Account/Manage");
 
                     SuccessMessage =
-                        message == "ChangePwdSuccess" ? "Your password has been changed."
-                        : message == "SetPwdSuccess" ? "Your password has been set."
-                        : message == "RemoveLoginSuccess" ? "The account was removed."
-                        : message == "AddPhoneNumberSuccess" ? "Phone number has been added"
-                        : message == "RemovePhoneNumberSuccess" ? "Phone number was removed"
+                        message == "ChangePwdSuccess" ? "Se cambió la contraseña."
+                        : message == "SetPwdSuccess" ? "Se estableció la contraseña."
+                        : message == "RemoveLoginSuccess" ? "La cuenta se quitó."
+                        : message == "AddPhoneNumberSuccess" ? "Se ha agregado el número de teléfono"
+                        : message == "RemovePhoneNumberSuccess" ? "Se ha quitado el número de teléfono"
                         : String.Empty;
                     successMessage.Visible = !String.IsNullOrEmpty(SuccessMessage);
                 }
@@ -89,7 +89,7 @@ namespace WebDCGTEC.Account
             }
         }
 
-        // Remove phonenumber from user
+        // Quitar número de teléfono del usuario
         protected void RemovePhone_Click(object sender, EventArgs e)
         {
             var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();

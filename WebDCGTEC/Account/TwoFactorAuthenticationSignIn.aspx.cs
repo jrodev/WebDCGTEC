@@ -50,7 +50,7 @@ namespace WebDCGTEC.Account
                     break;
                 case SignInStatus.Failure:
                 default:
-                    FailureText.Text = "Invalid code";
+                    FailureText.Text = "Código no válido";
                     ErrorMessage.Visible = true;
                     break;
             }

@@ -18,20 +18,20 @@ namespace WebDCGTEC.Account
         {
             if (IsValid)
             {
-                // Validate the user's email address
+                // Validar la dirección de correo electrónico del usuario
                 var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
                 ApplicationUser user = manager.FindByName(Email.Text);
                 if (user == null || !manager.IsEmailConfirmed(user.Id))
                 {
-                    FailureText.Text = "The user either does not exist or is not confirmed.";
+                    FailureText.Text = "El usuario no existe o no se ha confirmado.";
                     ErrorMessage.Visible = true;
                     return;
                 }
-                // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
-                // Send email with the code and the redirect to reset password page
+                // Para obtener más información sobre cómo habilitar la confirmación de cuentas y el restablecimiento de contraseña, visite http://go.microsoft.com/fwlink/?LinkID=320771
+                // Enviar correo electrónico con el código y la dirección de redireccionamiento a la página de restablecimiento de contraseña
                 //string code = manager.GeneratePasswordResetToken(user.Id);
                 //string callbackUrl = IdentityHelper.GetResetPasswordRedirectUrl(code, Request);
-                //manager.SendEmail(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>.");
+                //manager.SendEmail(user.Id, "Restablecer contraseña", "Para restablecer la contraseña, haga clic <a href=\"" + callbackUrl + "\">aquí</a>.");
                 loginForm.Visible = false;
                 DisplayEmail.Visible = true;
             }

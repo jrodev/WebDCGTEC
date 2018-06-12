@@ -28,7 +28,7 @@ namespace WebDCGTEC.Account
 
             if (!IsPostBack)
             {
-                // Determine the sections to render
+                // Determinar las secciones que se va a representar
                 if (HasPassword(manager))
                 {
                     changePasswordHolder.Visible = true;
@@ -39,11 +39,11 @@ namespace WebDCGTEC.Account
                     changePasswordHolder.Visible = false;
                 }
 
-                // Render success message
+                // Presentar mensaje de operación correcta
                 var message = Request.QueryString["m"];
                 if (message != null)
                 {
-                    // Strip the query string from action
+                    // Seccionar la cadena de consulta desde la acción
                     Form.Action = ResolveUrl("~/Account/Manage");
                 }
             }
@@ -73,7 +73,7 @@ namespace WebDCGTEC.Account
         {
             if (IsValid)
             {
-                // Create the local login info and link the local account to the user
+                // Crear la información de inicio de sesión local y vincular la cuenta local al usuario
                 var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
                 IdentityResult result = manager.AddPassword(User.Identity.GetUserId(), password.Text);
                 if (result.Succeeded)

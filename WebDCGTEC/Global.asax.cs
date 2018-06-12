@@ -13,7 +13,7 @@ namespace WebDCGTEC
     {
         void Application_Start(object sender, EventArgs e)
         {
-            // Code that runs on application startup
+            // Código que se ejecuta al iniciar la aplicación
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }

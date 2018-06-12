@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Manage Account" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Manage.aspx.cs" Inherits="WebDCGTEC.Account.Manage" %>
+﻿<%@ Page Title="Administrar cuenta" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Manage.aspx.cs" Inherits="WebDCGTEC.Account.Manage" %>
 
 <%@ Register Src="~/Account/OpenAuthProviders.ascx" TagPrefix="uc" TagName="OpenAuthProviders" %>
 
@@ -14,27 +14,27 @@
     <div class="row">
         <div class="col-md-12">
             <div class="form-horizontal">
-                <h4>Change your account settings</h4>
+                <h4>Cambiar la configuración de la cuenta</h4>
                 <hr />
                 <dl class="dl-horizontal">
-                    <dt>Password:</dt>
+                    <dt>Contraseña:</dt>
                     <dd>
                         <asp:HyperLink NavigateUrl="/Account/ManagePassword" Text="[Change]" Visible="false" ID="ChangePassword" runat="server" />
                         <asp:HyperLink NavigateUrl="/Account/ManagePassword" Text="[Create]" Visible="false" ID="CreatePassword" runat="server" />
                     </dd>
-                    <dt>External Logins:</dt>
+                    <dt>Inicios de sesión externos:</dt>
                     <dd><%: LoginsCount %>
                         <asp:HyperLink NavigateUrl="/Account/ManageLogins" Text="[Manage]" runat="server" />
 
                     </dd>
                     <%--
-                        Phone Numbers can used as a second factor of verification in a two-factor authentication system.
-                        See <a href="http://go.microsoft.com/fwlink/?LinkId=403804">this article</a>
-                        for details on setting up this ASP.NET application to support two-factor authentication using SMS.
-                        Uncomment the following blocks after you have set up two-factor authentication
+                        Los números de teléfono se pueden usar como una segunda fase de comprobación en un sistema de autenticación en dos fases.
+                        Vea <a href="http://go.microsoft.com/fwlink/?LinkId=403804">este artículo</a>
+                        para obtener detalles sobre cómo configurar esta aplicación de ASP.NET para que sea compatible con la autenticación en dos fases mediante SMS.
+                        Quite la marca de comentario de los siguientes bloques después de configurar la autenticación en dos fases
                     --%>
                     <%--
-                    <dt>Phone Number:</dt>
+                    <dt>Número de teléfono:</dt>
                     <% if (HasPhoneNumber)
                        { %>
                     <dd>
@@ -51,23 +51,23 @@
                     <% } %>
                     --%>
 
-                    <dt>Two-Factor Authentication:</dt>
+                    <dt>Autenticación de dos factores:</dt>
                     <dd>
                         <p>
-                            There are no two-factor authentication providers configured. See <a href="http://go.microsoft.com/fwlink/?LinkId=403804">this article</a>
-                            for details on setting up this ASP.NET application to support two-factor authentication.
+                            No hay ningún proveedor de autenticación en dos fases configurado. Vea <a href="http://go.microsoft.com/fwlink/?LinkId=403804">este artículo</a>
+                             para obtener detalles sobre cómo configurar esta aplicación de ASP.NET para que sea compatible con la autenticación en dos fases.
                         </p>
                         <% if (TwoFactorEnabled)
                           { %> 
                         <%--
-                        Enabled
+                        Habilitado
                         <asp:LinkButton Text="[Disable]" runat="server" CommandArgument="false" OnClick="TwoFactorDisable_Click" />
                         --%>
                         <% }
                           else
                           { %> 
                         <%--
-                        Disabled
+                        Deshabilitado
                         <asp:LinkButton Text="[Enable]" CommandArgument="true" OnClick="TwoFactorEnable_Click" runat="server" />
                         --%>
                         <% } %>

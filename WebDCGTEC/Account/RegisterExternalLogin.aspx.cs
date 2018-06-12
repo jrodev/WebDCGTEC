@@ -29,7 +29,7 @@ namespace WebDCGTEC.Account
 
         protected void Page_Load()
         {
-            // Process the result from an auth provider in the request
+            // Procesar el resultado de un proveedor de autenticación en la solicitud
             ProviderName = IdentityHelper.GetProviderNameFromRequest(Request);
             if (String.IsNullOrEmpty(ProviderName))
             {
@@ -54,7 +54,7 @@ namespace WebDCGTEC.Account
                 }
                 else if (User.Identity.IsAuthenticated)
                 {
-                    // Apply Xsrf check when linking
+                    // Aplicar comprobación de Xsrf durante la vinculación
                     var verifiedloginInfo = Context.GetOwinContext().Authentication.GetExternalLoginInfo(IdentityHelper.XsrfKey, User.Identity.GetUserId());
                     if (verifiedloginInfo == null)
                     {
@@ -108,9 +108,9 @@ namespace WebDCGTEC.Account
                 {
                     signInManager.SignIn(user, isPersistent: false, rememberBrowser: false);
 
-                    // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
+                    // Para obtener más información sobre cómo habilitar la confirmación de cuentas y el restablecimiento de contraseña, visite http://go.microsoft.com/fwlink/?LinkID=320771
                     // var code = manager.GenerateEmailConfirmationToken(user.Id);
-                    // Send this link via email: IdentityHelper.GetUserConfirmationRedirectUrl(code, user.Id)
+                    // Enviar este vínculo por correo electrónico: IdentityHelper.GetUserConfirmationRedirectUrl(code, user.Id)
 
                     IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
                     return;

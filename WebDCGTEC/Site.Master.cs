@@ -18,18 +18,18 @@ namespace WebDCGTEC
 
         protected void Page_Init(object sender, EventArgs e)
         {
-            // The code below helps to protect against XSRF attacks
+            // El código siguiente ayuda a proteger frente a ataques XSRF
             var requestCookie = Request.Cookies[AntiXsrfTokenKey];
             Guid requestCookieGuidValue;
             if (requestCookie != null && Guid.TryParse(requestCookie.Value, out requestCookieGuidValue))
             {
-                // Use the Anti-XSRF token from the cookie
+                // Utilizar el token Anti-XSRF de la cookie
                 _antiXsrfTokenValue = requestCookie.Value;
                 Page.ViewStateUserKey = _antiXsrfTokenValue;
             }
             else
             {
-                // Generate a new Anti-XSRF token and save to the cookie
+                // Generar un nuevo token Anti-XSRF y guardarlo en la cookie
                 _antiXsrfTokenValue = Guid.NewGuid().ToString("N");
                 Page.ViewStateUserKey = _antiXsrfTokenValue;
 
@@ -52,17 +52,17 @@ namespace WebDCGTEC
         {
             if (!IsPostBack)
             {
-                // Set Anti-XSRF token
+                // Establecer token Anti-XSRF
                 ViewState[AntiXsrfTokenKey] = Page.ViewStateUserKey;
                 ViewState[AntiXsrfUserNameKey] = Context.User.Identity.Name ?? String.Empty;
             }
             else
             {
-                // Validate the Anti-XSRF token
+                // Validar el token Anti-XSRF
                 if ((string)ViewState[AntiXsrfTokenKey] != _antiXsrfTokenValue
                     || (string)ViewState[AntiXsrfUserNameKey] != (Context.User.Identity.Name ?? String.Empty))
                 {
-                    throw new InvalidOperationException("Validation of Anti-XSRF token failed.");
+                    throw new InvalidOperationException("Error de validación del token Anti-XSRF.");
                 }
             }
         }
