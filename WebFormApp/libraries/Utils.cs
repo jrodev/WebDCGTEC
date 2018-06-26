@@ -8,10 +8,9 @@ using System.Web;
     {
         static public string baseUrl()
         {
-            return string.Format("{0}://{1}{2}",
-            HttpContext.Current.Request.Url.Scheme,
-            HttpContext.Current.Request.ServerVariables["HTTP_HOST"],
-            (HttpContext.Current.Request.ApplicationPath.Equals("/")) ? string.Empty : HttpContext.Current.Request.ApplicationPath
-            );
+            HttpRequest req = HttpContext.Current.Request;
+            string appPath = req.ApplicationPath.Equals("/") ? string.Empty : req.ApplicationPath;
+            string baseUrl = string.Format("{0}://{1}{2}", req.Url.Scheme, req.ServerVariables["HTTP_HOST"], appPath);
+            return baseUrl + "/";
         }
     }

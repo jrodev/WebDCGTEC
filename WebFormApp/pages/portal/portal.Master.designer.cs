@@ -13,13 +13,22 @@ namespace WebFormApp {
     public partial class portal {
         
         /// <summary>
-        /// head control.
+        /// headTitle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder headTitle;
+        
+        /// <summary>
+        /// HeadCssJs control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder HeadCssJs;
         
         /// <summary>
         /// MainContent control.

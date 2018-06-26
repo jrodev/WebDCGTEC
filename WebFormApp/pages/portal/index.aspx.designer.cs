@@ -10,6 +10,6 @@
 namespace WebFormApp.pages {
     
     
-    public partial class index {
+    public partial class contacto {
     }
 }
