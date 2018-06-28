@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
+<head>
     <title><asp:ContentPlaceHolder ID="headTitle" runat="server"></asp:ContentPlaceHolder></title>
     
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
