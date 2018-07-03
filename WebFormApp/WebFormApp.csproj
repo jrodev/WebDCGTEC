@@ -99,8 +99,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="pages\admin\login.aspx" />
+    <Content Include="pages\admin\privado\panel.aspx" />
     <Content Include="pages\portal\portal.Master" />
-    <Content Include="pages\admin\admin.Master" />
+    <Content Include="pages\admin\privado\admin.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -126,11 +127,11 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="libraries\Utils.cs" />
-    <Compile Include="pages\admin\admin.Master.cs">
+    <Compile Include="pages\admin\privado\admin.Master.cs">
       <DependentUpon>admin.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="pages\admin\admin.Master.designer.cs">
+    <Compile Include="pages\admin\privado\admin.Master.designer.cs">
       <DependentUpon>admin.Master</DependentUpon>
     </Compile>
     <Compile Include="pages\admin\AdminBasePage.cs">
@@ -142,6 +143,13 @@
     </Compile>
     <Compile Include="pages\admin\login.aspx.designer.cs">
       <DependentUpon>login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\admin\privado\panel.aspx.cs">
+      <DependentUpon>panel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\admin\privado\panel.aspx.designer.cs">
+      <DependentUpon>panel.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\portal\contacto.aspx.cs">
       <DependentUpon>contacto.aspx</DependentUpon>

@@ -26,14 +26,14 @@ namespace WebFormApp.pages.admin
         protected void ValidateUser(object sender, EventArgs e)
         {
             int userId = 0;
-            string constr = ConfigurationManager.ConnectionStrings["constr"].ConnectionString;
+            string constr = ConfigurationManager.ConnectionStrings["DbLocal"].ConnectionString;
             using (SqlConnection con = new SqlConnection(constr))
             {
-                using (SqlCommand cmd = new SqlCommand("Validate_User"))
+                using (SqlCommand cmd = new SqlCommand("pa_validarusuario"))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@Username", Login1.UserName);
-                    cmd.Parameters.AddWithValue("@Password", Login1.Password);
+                    cmd.Parameters.AddWithValue("@nomuser", Login.UserName);
+                    cmd.Parameters.AddWithValue("@passuser", Login.Password);
                     cmd.Connection = con;
                     con.Open();
                     userId = Convert.ToInt32(cmd.ExecuteScalar());
@@ -42,16 +42,28 @@ namespace WebFormApp.pages.admin
                 switch (userId)
                 {
                     case -1:
-                        Login1.FailureText = "Username and/or password is incorrect.";
+                        Login.FailureText = "password incorrecto.";
                         break;
-                    case -2:
-                        Login1.FailureText = "Account has not been activated.";
+                    case 0:
+                        Login.FailureText = "Usuario no existe";
                         break;
                     default:
-                        FormsAuthentication.RedirectFromLoginPage(Login1.UserName, Login1.RememberMeSet);
+                        FormsAuthentication.RedirectFromLoginPage(Login.UserName, Login.RememberMeSet);
                         break;
                 }
             }
+        }
+
+        protected void rdbtnLoginA_CheckedChanged(object sender, EventArgs e)
+        {
+            panelLoginA.Visible = true;
+            panelLoginB.Visible = false;
+        }
+
+        protected void rdbtnLoginB_CheckedChanged(object sender, EventArgs e)
+        {
+            panelLoginA.Visible = false;
+            panelLoginB.Visible = true;
         }
     }
 }

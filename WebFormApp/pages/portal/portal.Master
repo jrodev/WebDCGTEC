@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title><asp:ContentPlaceHolder ID="headTitle" runat="server"></asp:ContentPlaceHolder></title>
+    <title><asp:ContentPlaceHolder ID="HeadTitle" runat="server"></asp:ContentPlaceHolder></title>
     
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script>window.jQuery || document.write('<script src="<% =Utils.baseUrl()%>www/js/vendor/jquery/jquery-3.3.1.min.js"><\/script>')</script>

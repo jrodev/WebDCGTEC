@@ -16,6 +16,9 @@
         .auto-style3 {
             height: 26px;
         }
+
+        /*Adicion manual*/
+        .aspNetHidden{display:none;}
     </style>
 </head>
 <body>
@@ -34,25 +37,35 @@
             </ul>
         </nav>
         <section>
+
             <div class="tab1">
-                <form id="formLogin" runat="server">
-                    <table border="0" style="width: 258px">
-                        <tr><td class="auto-style1">usuario:</td><td>
-                            <asp:TextBox ID="txtUser" runat="server"></asp:TextBox>
-                            </td></tr>
-                        <tr><td class="auto-style2">password:</td><td class="auto-style3">
-                            <asp:TextBox ID="txtPass" runat="server"></asp:TextBox>
-                            </td></tr>
-                        <tr><td colspan="2">
-                            <asp:Button ID="btnLogin" runat="server" OnClick="btnLogin_Click" Text="Iniciar Sesion" />
-                            </td></tr>
-                    </table>
+                <form id="Div1" visible="true" runat="server">
+                    <asp:RadioButton ID="rdbtnLoginA" runat="server" Text="Login WebForm 1" AutoPostBack="True" TextAlign="Left" GroupName="Logins" OnCheckedChanged="rdbtnLoginA_CheckedChanged" Checked="true" />
+                    <asp:RadioButton ID="rdbtnLoginB" runat="server" Text="Login WebForm 2" AutoPostBack="True" TextAlign="Left" GroupName="Logins" OnCheckedChanged="rdbtnLoginB_CheckedChanged" Checked="false" />
+
+                    <asp:Panel id="panelLoginA" visible="true" runat="server">
+                        <asp:Login ID="Login" runat="server" OnAuthenticate="ValidateUser" DisplayRememberMe="False"></asp:Login>
+                    </asp:Panel>
+
+                    <asp:Panel id="panelLoginB" visible="false" runat="server">
+                        <table border="0" style="width: 258px">
+                            <tr><td class="auto-style1">usuario:</td>
+                                <td><asp:TextBox ID="txtUser" runat="server"></asp:TextBox></td>
+                            </tr>
+                            <tr><td class="auto-style2">password:</td>
+                                <td class="auto-style3"><asp:TextBox ID="txtPass" runat="server"></asp:TextBox></td>
+                            </tr>
+                            <tr><td colspan="2">
+                                <asp:Button ID="btnLogin" runat="server" OnClick="btnLogin_Click" Text="Iniciar Sesion" />
+                                </td>
+                            </tr>
+                        </table>
+                    </asp:Panel>
                 </form>
             </div>
+
             <div class="tab2">
-                <h2>Second</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum nesciunt ipsum dolore error repellendus officiis aliquid a, vitae reprehenderit, accusantium vero, ad. Obcaecati numquam sapiente cupiditate. Praesentium eaque, quae error!</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, maiores.</p>
+                login Standard
             </div>
         </section>
     </div>

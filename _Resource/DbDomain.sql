@@ -6,7 +6,7 @@
 	CONSTRAINT [PK_Empleado] PRIMARY KEY ([idEmpleado])
  )*/
 
-USE DbDomain
+	USE DbDomain
 GO
 
 CREATE TABLE usuario (
@@ -21,8 +21,9 @@ CREATE TABLE usuario (
 )
 GO
 
---Insert_User 'Mudassar2', '12345', 'mudassar@aspsnippets.com'
-ALTER PROCEDURE pa_insertarusuario
+
+CREATE PROCEDURE pa_insertarusuario
+	--pa_insertarusuario 'Marco Polo', 'marco', '123456', 'marco@miweb.com'
 	@nomape NVARCHAR(20),
 	@nomuser NVARCHAR(20),
 	@passuser NVARCHAR(20),
@@ -49,24 +50,36 @@ GO
 
 
 ALTER PROCEDURE pa_validarusuario
-      @nomuser VARCHAR(20),
-      @passuser VARCHAR(20)
+	-- pa_validarusuario 'marsco', '123456'
+    @nomuser VARCHAR(20),
+    @passuser VARCHAR(20)
 AS
 BEGIN
 	SET NOCOUNT ON;
 	DECLARE @idusuario INT, @ultLogin DATETIME
-     
-	SELECT @idusuario=id, @ultLogin=ultLogin
-	FROM usuario WHERE nomuser = @nomuser AND passuser = @passuser
-     
+    
+	-- Guardando datos de usuario (suponiendo que usuario es unico)
+	SELECT * INTO #usuario FROM usuario WHERE nomuser = @nomuser
+
+	-- Seteando idusuario y ultlogin
+	SELECT @idusuario=id, @ultLogin=ultLogin FROM #usuario
+
+    -- Verificando que existe idusuario
 	IF @idusuario IS NOT NULL
 	BEGIN
-		UPDATE usuario SET ultLogin = GETDATE() WHERE id = @idusuario
-		SELECT @idusuario AS idusuario -- User Valid
+		IF EXISTS (SELECT * FROM #usuario WHERE passuser = @passuser)
+		BEGIN
+			UPDATE usuario SET ultLogin = GETDATE() WHERE id = @idusuario
+			SELECT @idusuario AS idusuario -- Usuario existe
+		END
+		ELSE
+		BEGIN
+			SELECT -1 -- password incorrecto
+		END
 	END
 	ELSE
 	BEGIN
-		SELECT 0 -- User invalid.
+		SELECT 0 -- Usuario no existe
 	END
 END
 GO
