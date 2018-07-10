@@ -54,6 +54,7 @@ namespace WebFormApp.pages.admin
             }
         }
 
+        // Mostrar y ocultar formularios
         protected void rdbtnLoginA_CheckedChanged(object sender, EventArgs e)
         {
             panelLoginA.Visible = true;

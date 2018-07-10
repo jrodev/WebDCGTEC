@@ -113,11 +113,7 @@
     <Content Include="Global.asax" />
     <Content Include="pages\portal\contacto.aspx" />
     <Content Include="pages\portal\index.aspx" />
-    <Content Include="scripts\ai.0.22.9-build00167.js" />
-    <Content Include="scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="Web.config" />
-    <Content Include="www\ai.0.22.9-build00167.js" />
-    <Content Include="www\ai.0.22.9-build00167.min.js" />
     <Content Include="www\css\pages\admin\login.css" />
     <Content Include="www\css\pages\portal\index.css" />
     <Content Include="www\js\vendor\jquery\jquery-3.3.1.min.js" />

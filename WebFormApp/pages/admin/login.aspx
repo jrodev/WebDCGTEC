@@ -39,14 +39,16 @@
         <section>
 
             <div class="tab1">
-                <form id="Div1" visible="true" runat="server">
+                <form id="frmLogin" visible="true" runat="server">
                     <asp:RadioButton ID="rdbtnLoginA" runat="server" Text="Login WebForm 1" AutoPostBack="True" TextAlign="Left" GroupName="Logins" OnCheckedChanged="rdbtnLoginA_CheckedChanged" Checked="true" />
                     <asp:RadioButton ID="rdbtnLoginB" runat="server" Text="Login WebForm 2" AutoPostBack="True" TextAlign="Left" GroupName="Logins" OnCheckedChanged="rdbtnLoginB_CheckedChanged" Checked="false" />
 
+                    <% /*Formulario Forma A*/ %>
                     <asp:Panel id="panelLoginA" visible="true" runat="server">
                         <asp:Login ID="Login" runat="server" OnAuthenticate="ValidateUser" DisplayRememberMe="False"></asp:Login>
                     </asp:Panel>
 
+                    <% /*Formulario Forma B*/ %>
                     <asp:Panel id="panelLoginB" visible="false" runat="server">
                         <table border="0" style="width: 258px">
                             <tr><td class="auto-style1">usuario:</td>
