@@ -5,8 +5,10 @@
 	[clave] [varchar](50) NULL,
 	CONSTRAINT [PK_Empleado] PRIMARY KEY ([idEmpleado])
  )*/
+CREATE DATABASE DbDomain
+GO
 
-	USE DbDomain
+USE DbDomain
 GO
 
 CREATE TABLE usuario (
@@ -49,7 +51,7 @@ END
 GO
 
 
-ALTER PROCEDURE pa_validarusuario
+CREATE PROCEDURE pa_validarusuario
 	-- pa_validarusuario 'marsco', '123456'
     @nomuser VARCHAR(20),
     @passuser VARCHAR(20)
