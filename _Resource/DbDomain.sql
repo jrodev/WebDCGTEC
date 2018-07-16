@@ -25,9 +25,9 @@ CREATE TABLE usuario (
 )
 GO
 
-
+-- select * from usuario
 ALTER PROCEDURE pa_insertarusuario
-	--pa_insertarusuario 'Marco Polo', 'marco', '123456', 'marco@miweb.com', 1, 'admin'
+	--pa_insertarusuario 'Marco Polo', 'carlos', '123456', 'carlos@miweb.com', 2, 'supervisor'
 	@nomape NVARCHAR(20),
 	@nomuser NVARCHAR(20),
 	@passuser NVARCHAR(20),

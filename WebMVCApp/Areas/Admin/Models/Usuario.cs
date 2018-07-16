@@ -27,7 +27,7 @@ namespace WebMVCApp.Areas.Admin.Models
 
         public string nomRol { get; set; }
 
-        public int fecreg { get; set; }
+        public DateTime fecreg { get; set; }
 
     }
 }

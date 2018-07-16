@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -24,8 +25,9 @@ namespace WebMVCApp.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult login(FormCollection form)
         {
-            string sql = "SELECT * FROM usuario WHERE usu='" + form["usu"] + "' AND pass='" + form["pass"] + "'";
-            DASql DB = new DASql(Extra.GetSetting<string>("sisget"));
+            string sql = "SELECT * FROM usuario WHERE usu='{0}' AND pass='{1}'";
+            sql = String.Format(sql, form["usu"], form["pass"]);
+            DASql DB = new DASql(Extra.GetSetting<string>("DbDomain"));
             DataSet oSDA = (DataSet)DB.objSqlResult(sql, "sql", "Reader");
             DataTable dtRes = oSDA.Tables["Table1"];
 
@@ -35,19 +37,23 @@ namespace WebMVCApp.Areas.Admin.Controllers
                 // Llenamos el Usuario Model
                 Usuario usu = new Usuario();
                 DataRow drRes = dtRes.Rows[0];
-                usu.usu = form["usu"];
-                usu.pass = form["pass"];
+
                 usu.id = (int)drRes["id"];
-                usu.idArea = (int)drRes["idArea"];
-                usu.idCargo = (int)drRes["idCargo"];
-                usu.idPersona = (int)drRes["idPersona"];
+                usu.nomape = (string)drRes["nomape"];
+
+                usu.nomuser = form["usu"];
+                usu.passuser = form["pass"];
+
+                usu.email = (string)drRes["email"];
+                usu.ultLogin = (DateTime)drRes["ultLogin"];
                 usu.idRol = (int)drRes["idRol"];
                 usu.nomRol = (string)drRes["nomRol"];
+                usu.fecreg = (DateTime)drRes["fecreg"];
 
                 // Create a new ticket used for authentication
                 FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(
                     1,                           // version: Ticket version
-                    usu.usu,                     // name: Username to be associated with this ticket
+                    usu.nomuser,                 // name: Username to be associated with this ticket
                     DateTime.Now,                // issueDate: Date/time issued - fecha Inicio
                     DateTime.Now.AddMinutes(30), // expiration: Date/time to expire
                     true,                        // isPersistent: "true" for a persistent user cookie (could be a checkbox on form)
@@ -67,14 +73,10 @@ namespace WebMVCApp.Areas.Admin.Controllers
 
                 // Redirect to requested URL, or homepage if no previous page requested
                 string returnUrl = Request.QueryString["ReturnUrl"];
-                if (returnUrl != null)
-                {
-                    return Redirect(returnUrl);
-                }
-                else
-                {
-                    return RedirectToAction("privado1", "Test");
-                }
+                if (returnUrl != null) { return Redirect(returnUrl); }
+
+                return RedirectToAction("Index", "Login");
+
                 // Don't call the FormsAuthentication.RedirectFromLoginPage since it could
                 // replace the authentication ticket we just added...
             }
