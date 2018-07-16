@@ -1,10 +1,10 @@
-/*CREATE TABLE usuario (
-	idusuario INT IDENTITY(1,1) NOT NULL,
-	nombres VARCHAR(50) NULL,
-	[usuario] [varchar](50) NULL,
-	[clave] [varchar](50) NULL,
-	CONSTRAINT [PK_Empleado] PRIMARY KEY ([idEmpleado])
- )*/
+-- ----------------------------------------------------------------------------------
+USE master
+GO
+
+DROP DATABASE DbDomain
+GO
+
 CREATE DATABASE DbDomain
 GO
 
@@ -18,18 +18,22 @@ CREATE TABLE usuario (
 	passuser VARCHAR(30) NOT NULL, -- clave
 	email VARCHAR(50) NOT NULL,    -- Correo uuario
 	ultLogin DATETIME NULL,		   -- ulitmo inicio de sesion
+	idRol INT NOT NULL,            -- Id de Rol
+	nomRol VARCHAR(50) NOT NULL,   -- Nombre rol (admin, supervisor, vendedor)
 	fecreg DATETIME NOT NULL,	   -- fecha de registro
 	CONSTRAINT [pk_usuario] PRIMARY KEY ( id )
 )
 GO
 
 
-CREATE PROCEDURE pa_insertarusuario
-	--pa_insertarusuario 'Marco Polo', 'marco', '123456', 'marco@miweb.com'
+ALTER PROCEDURE pa_insertarusuario
+	--pa_insertarusuario 'Marco Polo', 'marco', '123456', 'marco@miweb.com', 1, 'admin'
 	@nomape NVARCHAR(20),
 	@nomuser NVARCHAR(20),
 	@passuser NVARCHAR(20),
-	@email VARCHAR(50)
+	@email VARCHAR(50),
+	@idRol INT,
+	@nomRol VARCHAR(50)
 AS
 BEGIN
 	SET NOCOUNT ON;
@@ -43,8 +47,8 @@ BEGIN
 	END
 	ELSE
 	BEGIN
-		INSERT INTO usuario (nomape,nomuser,passuser,email,fecreg)
-		VALUES (@nomape ,@nomuser ,@passuser ,@email ,GETDATE())
+		INSERT INTO usuario (nomape, nomuser, passuser, email, idRol, nomRol, fecreg)
+		VALUES (@nomape ,@nomuser ,@passuser ,@email ,@idRol ,@nomRol ,GETDATE())
 		SELECT SCOPE_IDENTITY() -- UserId			   
      END
 END
