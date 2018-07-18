@@ -21,8 +21,16 @@ namespace WebMVCApp.Areas.Admin.Models
 
         public string email { get; set; }
 
-        public DateTime ultLogin { get; set; }
-        
+        // Variable sin asignar tiene el valor por defecto: default(T)
+        DateTime _ultLogin;
+        public DateTime ultLogin {
+            get {
+                if (_ultLogin == default(DateTime)) return DateTime.Now;
+                return _ultLogin;
+            }
+            set { _ultLogin = value;  }
+        } //= DateTime.Now;
+
         public int idRol { get; set; }
 
         public string nomRol { get; set; }

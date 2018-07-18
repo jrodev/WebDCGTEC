@@ -17,7 +17,15 @@ namespace WebMVCApp.Areas.Portal
             context.MapRoute(
                 "Portal_default",
                 "Portal/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
+                new { action = "Index", id = UrlParameter.Optional },
+                namespaces: new[] { "WebMVCApp.Areas.Portal.Controllers" }
+            );
+
+            context.MapRoute(
+                "Portal_home",
+                "",
+                new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+                namespaces: new[] { "WebMVCApp.Areas.Portal.Controllers" }
             );
         }
     }

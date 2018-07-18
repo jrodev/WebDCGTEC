@@ -17,16 +17,22 @@ namespace WebMVCApp.Areas.Admin.Controllers
         // Vista de inicio de session
         public ActionResult Index()
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                string defUrl = FormsAuthentication.DefaultUrl;
+                if (defUrl != null && defUrl != "") { return Redirect(defUrl); }
+                return RedirectToAction("Index", "Panel");
+            }
             return View();
         }
 
         // Iniciando session
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult login(FormCollection form)
+        public ActionResult Index(FormCollection form)
         {
-            string sql = "SELECT * FROM usuario WHERE usu='{0}' AND pass='{1}'";
-            sql = String.Format(sql, form["usu"], form["pass"]);
+            string sql = "SELECT * FROM usuario WHERE nomuser='{0}' AND passuser='{1}'";
+            sql = String.Format(sql, form["nomuser"], form["passuser"]);
             DASql DB = new DASql(Extra.GetSetting<string>("DbDomain"));
             DataSet oSDA = (DataSet)DB.objSqlResult(sql, "sql", "Reader");
             DataTable dtRes = oSDA.Tables["Table1"];
@@ -41,11 +47,11 @@ namespace WebMVCApp.Areas.Admin.Controllers
                 usu.id = (int)drRes["id"];
                 usu.nomape = (string)drRes["nomape"];
 
-                usu.nomuser = form["usu"];
-                usu.passuser = form["pass"];
+                usu.nomuser = form["nomuser"];
+                usu.passuser = form["passuser"];
 
                 usu.email = (string)drRes["email"];
-                usu.ultLogin = (DateTime)drRes["ultLogin"];
+                usu.ultLogin = (drRes["ultLogin"]==DBNull.Value)?DateTime.Now:(DateTime)drRes["ultLogin"];
                 usu.idRol = (int)drRes["idRol"];
                 usu.nomRol = (string)drRes["nomRol"];
                 usu.fecreg = (DateTime)drRes["fecreg"];
@@ -75,7 +81,9 @@ namespace WebMVCApp.Areas.Admin.Controllers
                 string returnUrl = Request.QueryString["ReturnUrl"];
                 if (returnUrl != null) { return Redirect(returnUrl); }
 
-                return RedirectToAction("Index", "Login");
+                if(defUrl!=null && defUrl != "") { return Redirect(defUrl); }
+
+                return RedirectToAction("Index", "Panel");
 
                 // Don't call the FormsAuthentication.RedirectFromLoginPage since it could
                 // replace the authentication ticket we just added...

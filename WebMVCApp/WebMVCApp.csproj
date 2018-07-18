@@ -125,13 +125,18 @@
     <Content Include="scripts\ai.0.22.9-build00167.js" />
     <Content Include="scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="Web.config" />
+    <Content Include="www\css\admin\style.css" />
+    <Content Include="www\vendor\purecss\pure-min.css" />
+    <Content Include="www\vendor\purecss\pure-responsive-min.css" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
+    <Compile Include="Areas\Admin\Controllers\PanelController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductosController.cs" />
     <Compile Include="Areas\Admin\Models\Usuario.cs" />
+    <Compile Include="Areas\Portal\Controllers\HomeController.cs" />
     <Compile Include="Areas\Portal\PortalAreaRegistration.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -148,10 +153,15 @@
     </Content>
     <Content Include="Areas\Portal\Views\web.config" />
     <Content Include="Areas\Admin\Views\web.config" />
-    <Content Include="Areas\Admin\Views\Login\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Areas\Admin\Views\Pages\Login\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Layouts\_Main.cshtml" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Admin\Views\Productos\Listado.cshtml" />
+    <Content Include="Areas\Admin\Views\Pages\Productos\Listado.cshtml" />
+    <Content Include="Areas\Portal\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Portal\Views\Shared\_LayoutPortal.cshtml" />
+    <Content Include="Areas\Portal\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Pages\Panel\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Layouts\_Error.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -161,11 +171,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Portal\Controllers\" />
     <Folder Include="Areas\Portal\Models\" />
-    <Folder Include="Areas\Portal\Views\Shared\" />
     <Folder Include="Controllers\" />
     <Folder Include="Models\" />
+    <Folder Include="www\js\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
