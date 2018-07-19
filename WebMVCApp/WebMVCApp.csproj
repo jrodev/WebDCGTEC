@@ -122,12 +122,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
-    <Content Include="scripts\ai.0.22.9-build00167.js" />
-    <Content Include="scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="Web.config" />
     <Content Include="www\css\admin\style.css" />
     <Content Include="www\vendor\purecss\pure-min.css" />
     <Content Include="www\vendor\purecss\pure-responsive-min.css" />
+    <Content Include="www\vueapp\foo\index.js" />
+    <Content Include="www\webpack.config.js" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -146,7 +146,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\web.config" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -168,12 +167,11 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+    <Content Include="www\package.json" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Portal\Models\" />
-    <Folder Include="Controllers\" />
-    <Folder Include="Models\" />
     <Folder Include="www\js\" />
   </ItemGroup>
   <PropertyGroup>
