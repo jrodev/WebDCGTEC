@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="@Extra.baseUrl()www/vendor/purecss/pure-min.css">
     <link rel="stylesheet" href="@Extra.baseUrl()www/vendor/purecss/pure-responsive-min.css">
     <link rel="stylesheet" href="@Extra.baseUrl()www/css/admin/style.css">
+    @RenderSection("Styles", required: false)
+
 </head>
 <body>
     <div id="layout" class="pure-g">
@@ -61,5 +63,7 @@
             </div>
         </div>
     </div>
+
+    @RenderSection("Scripts", required: false)
 </body>
 </html>

@@ -1,4 +1,4 @@
-﻿
+﻿@using System.Web.Optimization
 @{
     ViewBag.Title = "PANEL";
     //Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
@@ -115,3 +115,21 @@
             </div>
         </div>
 
+
+<hr />
+<div id="app">
+    <h3>@ViewBag.Message</h3>
+    {{ vueMessage }}
+    <first-component v-bind:time="new Date()"></first-component>
+
+    <div class="text-center">
+        <button class="btn btn-primary" v-on:click="toggleModal">Show modal!</button>
+        <sweet-modal ref="modal">
+            <h3>Modal Message!!!</h3>
+        </sweet-modal>
+    </div>
+</div>
+
+@section scripts {
+    @Scripts.Render("~/www/bundle/admin_panel_index.js")
+}

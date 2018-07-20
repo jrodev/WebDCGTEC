@@ -28,8 +28,8 @@ En este directorio usted encontrara lo siguiente:
 ## Requisitos minimos y Pasos iniciales
 
 + Tener instalado NodeJS (para window o Linux). Esto instala nodejs y npm (manejador de paquetes.)
-+ Ejecutar: _**npm run build**_ el comando Build esta definido dentro de la seccion scripts en el archivo: + Ejecutar: _**npm run build**_ el comando Build esta definido dentro de la seccion scripts en el archivo: **package.json**.
-es importante tener creado las carpetas dentro de vueapp con el archivo index.js en cada carpeta.
++ Ejecutar: _**npm run build**_ el comando Build esta definido dentro de la seccion scripts en el archivo: **package.json**.
+Es importante tener creado las carpetas () dentro de vueapp con el archivo index.js en cada carpeta.
 
 
 
@@ -79,6 +79,7 @@ Sample text here...
 
 Syntax highlighting
 
+:   Definition 1
 ``` js
 var foo = function (bar) {
   return bar++;
