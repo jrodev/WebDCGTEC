@@ -168,6 +168,8 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <Content Include="www\package.json" />
+    <Content Include="www\.gitignore" />
+    <Content Include="www\Readme.md" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
