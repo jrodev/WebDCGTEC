@@ -2,7 +2,8 @@
 USE master
 GO
 
-DROP DATABASE DbDomain
+IF EXISTS(SELECT * FROM sys.databases WHERE name='DbDomain')
+	DROP DATABASE DbDomain
 GO
 
 CREATE DATABASE DbDomain
@@ -25,8 +26,13 @@ CREATE TABLE usuario (
 )
 GO
 
+INSERT usuario (nomape, nomuser, passuser, email, ultLogin, idRol, nomRol, fecreg) VALUES (N'Marco Polo', N'marco', N'123456', N'marco@miweb.com', NULL, 1, N'admin', CAST(N'2018-07-16 16:26:03.340' AS DateTime))
+GO
+INSERT usuario (nomape, nomuser, passuser, email, ultLogin, idRol, nomRol, fecreg) VALUES (N'Carlos Fernandez', N'carlos', N'123456', N'carlos@miweb.com', NULL, 2, N'supervisor', CAST(N'2018-07-16 16:26:31.277' AS DateTime))
+GO
+
 -- select * from usuario
-ALTER PROCEDURE pa_insertarusuario
+CREATE PROCEDURE pa_insertarusuario
 	--pa_insertarusuario 'Marco Polo', 'carlos', '123456', 'carlos@miweb.com', 2, 'supervisor'
 	@nomape NVARCHAR(20),
 	@nomuser NVARCHAR(20),

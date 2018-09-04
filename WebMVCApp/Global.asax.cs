@@ -1,9 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+
+using Microsoft.SqlServer.Management.Smo;
+using Microsoft.SqlServer.Management.Common;
+using System.IO;
 
 namespace WebMVCApp
 {
@@ -27,6 +33,40 @@ namespace WebMVCApp
                 //re.PartialViewLocationFormats = re.PartialViewLocationFormats.Union(newsPaths).ToArray();
                 re.AreaViewLocationFormats = re.AreaViewLocationFormats.Union(newsPaths).ToArray();
             }*/
+
+            if (!CheckDatabaseExists("DbDomain")) RunScript();
+        }
+
+        private void RunScript()
+        {
+            string sqlConnectionString = Extra.GetSetting<string>("DbConect");
+            /*FileInfo file = new FileInfo("C:\\myscript.sql");*/
+            string mapPath = HttpContext.Current.Server.MapPath("~/_Resource/DbDomain.sql");
+            FileStream f = new FileStream(mapPath, FileMode.Open, FileAccess.Read, FileShare.Read);
+
+            using (StreamReader r = new StreamReader(f))
+            {
+                string sqlScript = r.ReadToEnd();
+                SqlConnection conn = new SqlConnection(sqlConnectionString);
+                Server server = new Server(new ServerConnection(conn));
+                server.ConnectionContext.ExecuteNonQuery(sqlScript);
+            }
+        }
+
+        private bool CheckDatabaseExists(string databaseName)
+        {
+            string sqlConnectionString = Extra.GetSetting<string>("DbConect");
+            using (var cnn = new SqlConnection(sqlConnectionString))
+            {
+                var cmd = new SqlCommand();
+                cmd.CommandText = "SELECT db_id(@databaseName)";
+                cmd.Parameters.Add("@databaseName", SqlDbType.VarChar).Value = databaseName;
+                cmd.Connection = cnn;
+
+                cnn.Open();
+                bool bExistDb = (cmd.ExecuteScalar() != DBNull.Value);
+                return bExistDb;
+            }
         }
     }
 
