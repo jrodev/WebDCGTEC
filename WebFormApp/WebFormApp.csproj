@@ -100,6 +100,7 @@
     </Content>
     <Content Include="pages\admin\login.aspx" />
     <Content Include="pages\admin\privado\panel.aspx" />
+    <Content Include="pages\portal\productos.aspx" />
     <Content Include="pages\portal\portal.Master" />
     <Content Include="pages\admin\privado\admin.Master" />
     <None Include="Web.Debug.config">
@@ -115,6 +116,8 @@
     <Content Include="pages\portal\index.aspx" />
     <Content Include="Web.config" />
     <Content Include="www\css\pages\admin\login.css" />
+    <Content Include="www\css\pages\portal\productos.css" />
+    <Content Include="www\css\pages\portal\main.css" />
     <Content Include="www\css\pages\portal\index.css" />
     <Content Include="www\js\vendor\jquery\jquery-3.3.1.min.js" />
   </ItemGroup>
@@ -146,6 +149,13 @@
     </Compile>
     <Compile Include="pages\admin\privado\panel.aspx.designer.cs">
       <DependentUpon>panel.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\portal\productos.aspx.cs">
+      <DependentUpon>productos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\portal\productos.aspx.designer.cs">
+      <DependentUpon>productos.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\portal\contacto.aspx.cs">
       <DependentUpon>contacto.aspx</DependentUpon>

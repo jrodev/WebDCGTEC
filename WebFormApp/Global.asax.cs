@@ -21,6 +21,7 @@ namespace WebFormApp
             //routes.MapPageRoute("routeSale", "SalesReport/{locale}/{year}/{*queryvalues}", "~/sales.aspx");
             routes.MapPageRoute("routeIndex", "", "~/pages/portal/index.aspx");
             routes.MapPageRoute("routeContact", "contacto", "~/pages/portal/contacto.aspx");
+            routes.MapPageRoute("routeProducts", "productos", "~/pages/portal/productos.aspx");
 
             // Admin Routes
             routes.MapPageRoute("routeLogin", "admin", "~/pages/admin/login.aspx");
